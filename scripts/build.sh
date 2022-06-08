@@ -5,6 +5,6 @@ set -e
 rm -f blackbox.js
 rm -rf build
 
-esbuild src/index.ts --bundle --outfile=blackbox.js --platform=node --minify
+esbuild src/main.ts --bundle --outfile=blackbox.js --platform=node --minify --analyze
 mkdir -p build
 cp node_modules/rpio/build/Release/rpio.node build/rpio.node
