@@ -1,0 +1,43 @@
+name: release
+on:
+  push:
+    tags:
+      - "v*"
+jobs:
+  artifacts:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Set up cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Set module version
+        run: yarn version --new-version ${GITHUB_REF#refs/tags/v}
+
+      - name: Bundle JavaScript
+        run: yarn build
+
+      - name: Create archive
+        run: yarn zip
+
+      - name: Add build to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ github.token }}
+          file: blackbox.zip
+          tag: ${{ github.ref }}

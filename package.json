@@ -1,0 +1,28 @@
+{
+  "name": "blackbox",
+  "version": "0.1.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "./scripts/build.sh",
+    "lint": "eslint src/**/*",
+    "execute": "yarn build && node blackbox.js",
+    "zip": 	"zip -r blackbox.zip build/* blackbox.js"
+  },
+  "devDependencies": {
+    "@types/webpack-env": "^1.17.0",
+    "esbuild": "^0.14.43",
+    "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.2",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "@types/rpi-gpio": "^2.1.1",
+    "@types/rpio": "^2.4.2",
+    "node-gyp": "^9.0.0",
+    "rpi-gpio": "^2.1.7",
+    "rpio": "^2.4.2"
+  }
+}
