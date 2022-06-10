@@ -14,6 +14,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 14
+          registry-url: https://npm.pkg.github.com
 
       - name: Set up cache
         uses: actions/cache@v3
@@ -33,11 +34,7 @@ jobs:
         run: yarn build
 
       - name: Create archive
-        run: yarn zip
+        run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ github.token }}
 
-      - name: Add build to release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ github.token }}
-          file: blackbox.zip
-          tag: ${{ github.ref }}

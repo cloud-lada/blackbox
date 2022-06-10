@@ -1,12 +1,17 @@
 {
-  "name": "blackbox",
+  "name": "@cloud-lada/blackbox",
   "version": "0.1.0",
-  "main": "src/main.ts",
+  "main": "blackbox.js",
+  "license": "Apache-2.0",
+  "author": "cloud-lada",
+  "description": "The in-vehicle components of the cloud-lada platform",
+  "bin": {
+    "blackbox": "blackbox.js"
+  },
   "scripts": {
     "build": "./scripts/build.sh",
     "lint": "eslint src/*",
-    "execute": "yarn build && node blackbox.js",
-    "zip": "zip -r blackbox.zip build/* blackbox.js"
+    "execute": "yarn build && node blackbox.js"
   },
   "devDependencies": {
     "@types/webpack-env": "^1.17.0",
@@ -24,5 +29,9 @@
     "@types/rpio": "^2.4.2",
     "commander": "^9.3.0",
     "rpio": "^2.4.2"
-  }
+  },
+  "files": [
+    "blackbox.js",
+    "build/rpio.node"
+  ]
 }
