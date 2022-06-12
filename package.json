@@ -1,12 +1,14 @@
 {
   "name": "blackbox",
-  "version": "0.1.0",
+  "version": "v0.1.0-alpha1",
   "main": "src/main.ts",
   "scripts": {
     "build": "./scripts/build.sh",
     "lint": "eslint src/*",
-    "execute": "yarn build && node blackbox.js",
-    "zip": "zip -r blackbox.zip build/* blackbox.js"
+    "execute": "node blackbox.js"
+  },
+  "bin": {
+    "blackbox": "blackbox.js"
   },
   "devDependencies": {
     "@types/webpack-env": "^1.17.0",
