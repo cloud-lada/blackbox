@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@types/rpio": "^2.4.2",
-    "commander": "^9.3.0",
+    "commander": "^9.4.0",
     "rpio": "^2.4.2"
   }
 }
